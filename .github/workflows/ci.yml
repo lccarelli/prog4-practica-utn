@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detectar:
+    name: Detectar proyectos
+    runs-on: ubuntu-latest
+    outputs:
+      proyectos: ${{ steps.buscar.outputs.proyectos }}
+      hay: ${{ steps.buscar.outputs.hay }}
+    steps:
+      - name: Traer el código
+        uses: actions/checkout@v7
+
+      # Busca las carpetas que tengan angular.json y arma la lista para la matriz,
+      # así no hay que tocar este archivo al agregar clase-02, clase-03, etc.
+      - name: Buscar carpetas con angular.json
+        id: buscar
+        run: |
+          proyectos=$(find . -maxdepth 2 -name angular.json -not -path './node_modules/*' \
+            | sed 's|^\./||; s|/angular.json$||' \
+            | sort \
+            | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "Encontrados: $proyectos"
+          echo "proyectos=$proyectos" >> "$GITHUB_OUTPUT"
+          if [ "$proyectos" = "[]" ]; then
+            echo "hay=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  verificar:
+    name: ${{ matrix.proyecto }}
+    needs: detectar
+    if: needs.detectar.outputs.hay == 'true'
+    runs-on: ubuntu-latest
+
+    strategy:
+      # Que una clase falle no cancela la verificación de las demás.
+      fail-fast: false
+      matrix:
+        proyecto: ${{ fromJson(needs.detectar.outputs.proyectos) }}
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.proyecto }}
+
+    steps:
+      - name: Traer el código
+        uses: actions/checkout@v7
+
+      - name: Preparar Node
+        uses: actions/setup-node@v7
+        with:
+          # Se resuelve desde la raíz del repositorio, no desde working-directory.
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: ${{ matrix.proyecto }}/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Chequear formato
+        run: npm run format:check
+
+      - name: Tests
+        run: npm run test:ci
+
+      - name: Build de producción
+        run: npm run build

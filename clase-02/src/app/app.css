@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--tenue);
+  font-weight: 500;
+}
+
+/* La aplica routerLinkActive sobre el link de la ruta actual. */
+nav a.activo {
+  color: var(--acento);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}

@@ -1,0 +1,20 @@
+<app-titulo />
+
+<nav>
+  <!-- exact: true en la home, porque '' es prefijo de todas las demás rutas. -->
+  <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">
+    Bienvenida
+  </a>
+  <a routerLink="/tutoriales" routerLinkActive="activo">Tutoriales</a>
+  <a routerLink="/docs" routerLinkActive="activo">Docs</a>
+  <a routerLink="/dashboard" routerLinkActive="activo">Dashboard</a>
+  <a routerLink="/ruta-que-no-existe">Error</a>
+</nav>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer>
+  <p>Programación IV · UTN FRA · 2026 C2</p>
+</footer>

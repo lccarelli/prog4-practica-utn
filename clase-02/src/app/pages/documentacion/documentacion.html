@@ -1,0 +1,16 @@
+<section>
+  <h2>Documentación</h2>
+  <p>
+    Esta página es un padre con rutas hijas. El menú de abajo cambia sólo el contenido del segundo
+    outlet; el título y el menú no se vuelven a montar.
+  </p>
+
+  <nav class="sub">
+    <a routerLink="instalacion" routerLinkActive="activo">Instalación</a>
+    <a routerLink="esenciales" routerLinkActive="activo">Esenciales</a>
+  </nav>
+
+  <div class="hija">
+    <router-outlet />
+  </div>
+</section>

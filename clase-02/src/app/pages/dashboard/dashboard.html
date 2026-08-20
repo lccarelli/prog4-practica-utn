@@ -1,0 +1,36 @@
+<section>
+  <h2>Dashboard</h2>
+  <p>Los cuatro tipos de bindeo, uno por bloque.</p>
+
+  <article>
+    <!-- ngNonBindable para que Angular no interprete las llaves como interpolación. -->
+    <h3>
+      1 · Interpolación <code ngNonBindable>{{ expresion }}</code>
+    </h3>
+    <p>De la clase al template, como texto.</p>
+    <p class="salida">2 + 3 = {{ sumar(2, 3) }}</p>
+  </article>
+
+  <article>
+    <h3>2 · Propiedad <code>[prop]</code></h3>
+    <p>De la clase a una propiedad del elemento.</p>
+    <p class="salida" [style.color]="color">Este texto toma el color de la variable.</p>
+    <button [disabled]="contador() === 0" (click)="reiniciar()">
+      Reiniciar (deshabilitado en 0)
+    </button>
+  </article>
+
+  <article>
+    <h3>3 · Evento <code>(evento)</code></h3>
+    <p>Del template a un método de la clase.</p>
+    <button (click)="incrementar()">Sumar uno</button>
+    <p class="salida">Contador: {{ contador() }}</p>
+  </article>
+
+  <article>
+    <h3>4 · Bidireccional <code>[(ngModel)]</code></h3>
+    <p>Los dos sentidos a la vez. Necesita <code>FormsModule</code>.</p>
+    <input [(ngModel)]="nombre" name="nombre" placeholder="Tu nombre" />
+    <p class="salida">{{ saludo }}</p>
+  </article>
+</section>

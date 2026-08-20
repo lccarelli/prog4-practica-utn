@@ -1,0 +1,20 @@
+# Cada proyecto clase-XX trae su propio .gitignore.
+# Este es la red de seguridad a nivel repositorio.
+
+node_modules/
+dist/
+.angular/
+/tmp
+/out-tsc
+
+# Editores
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.history/
+
+# Sistema
+.DS_Store
+Thumbs.db

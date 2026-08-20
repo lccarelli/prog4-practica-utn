@@ -1,0 +1,16 @@
+header {
+  padding: 2rem 0 0.5rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  color: var(--tenue);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+}

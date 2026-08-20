@@ -1,0 +1,22 @@
+<section>
+  <h2>Tutoriales</h2>
+
+  <article>
+    <h3>Signal y ciclo de vida</h3>
+    <p>
+      El contador se incrementa solo cada segundo desde <code>ngOnInit</code>. Al salir de la página
+      <code>ngOnDestroy</code> corta el intervalo.
+    </p>
+    <p class="salida">Contador: {{ contador() }}</p>
+    <button (click)="contar()">Contar a mano</button>
+    <button (click)="reiniciar()">Reiniciar</button>
+  </article>
+
+  <article>
+    <h3>Bindeo de atributo</h3>
+    <p>El <code>src</code> sale de una propiedad de la clase.</p>
+    <img [src]="imagen" width="60" height="60" alt="Logo" />
+  </article>
+
+  <app-card />
+</section>

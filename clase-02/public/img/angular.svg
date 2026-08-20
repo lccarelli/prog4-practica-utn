@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Logo de Angular">
+  <path d="M50 4 92 19l-6 53-36 24-36-24L8 19z" fill="#b8003c" />
+  <path d="M50 4v96l36-24 6-53z" fill="#8d002e" />
+  <path d="M50 22 30 72h8l4-11h16l4 11h8zm0 15 6 16H44z" fill="#fff" />
+</svg>

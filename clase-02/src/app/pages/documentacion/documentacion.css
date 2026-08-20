@@ -1,0 +1,22 @@
+.sub {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.sub a {
+  text-decoration: none;
+  color: var(--tenue);
+  font-size: 0.875rem;
+}
+
+.sub a.activo {
+  color: var(--acento);
+  font-weight: 600;
+}
+
+.hija {
+  padding-top: 1rem;
+}
