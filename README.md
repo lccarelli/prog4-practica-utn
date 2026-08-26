@@ -89,6 +89,8 @@ En `pages/` va lo que tiene URL propia; en `componentes/`, lo reutilizable.
 | 01    | 18/08/2026 | Angular, CLI, componentes, binding, ruteo                          | [clase-01](clase-01/) | [clase-01.md](apuntes/clase-01.md) |
 | 02    | 20/08/2026 | Lazy loading, rutas hijas, ciclo de vida, bindeos, signals          | [clase-02](clase-02/) | [clase-02.md](apuntes/clase-02.md) |
 
+Referencia aparte: [comandos del CLI](apuntes/cli-angular.md).
+
 ## Material de la cátedra
 
 - [Repositorio 2026 C2](https://github.com/afriadenrich/programacion-iv-2026-c2)
