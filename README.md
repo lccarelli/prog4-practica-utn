@@ -88,6 +88,8 @@ En `pages/` va lo que tiene URL propia; en `componentes/`, lo reutilizable.
 | ----- | ---------- | ----------------------------------------------------------------- | --------------------- | ---------------------------------- |
 | 01    | 18/08/2026 | Angular, CLI, componentes, binding, ruteo                          | [clase-01](clase-01/) | [clase-01.md](apuntes/clase-01.md) |
 | 02    | 20/08/2026 | Lazy loading, rutas hijas, ciclo de vida, bindeos, signals          | [clase-02](clase-02/) | [clase-02.md](apuntes/clase-02.md) |
+| 03    | 25/08/2026 | Input, output, servicios, HttpClient                               | [clase-03-servicios](clase-03-servicios/) | [clase-03.md](apuntes/clase-03.md) |
+| 04    | 27/08/2026 | Formularios, validaciones, validaciones propias                    | —                     | —                                  |
 
 Referencias aparte: [comandos del CLI](apuntes/cli-angular.md) · [API de Rick and Morty](apuntes/api-rick-and-morty.md).
 
