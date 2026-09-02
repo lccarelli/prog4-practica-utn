@@ -10,7 +10,7 @@ export class Personajes {
   private http = inject(HttpClient);
   private readonly apiUrl = 'https://rickandmortyapi.com/api/character';
 
-  getPersonajes(){
+  getPersonajes() {
     return this.http.get<Respuesta<Personaje>>(this.apiUrl);
   }
 }

@@ -1,5 +1,15 @@
 import { ValidationErrors } from '@angular/forms';
 
+/** Lo que dejan los validadores en el objeto de error. Todo opcional: cada uno pone lo suyo. */
+interface DetalleError {
+  requiredLength?: number;
+  actualLength?: number;
+  min?: number;
+  max?: number;
+  actual?: number;
+  requerido?: number;
+}
+
 /**
  * Un mensaje por clave de error. Cada función recibe el detalle que dejó el
  * validador, así el texto puede usar los números reales en vez de repetirlos.
@@ -7,7 +17,7 @@ import { ValidationErrors } from '@angular/forms';
  * Ojo con las claves de Angular: minlength y maxlength van en minúscula,
  * aunque los validadores se llamen minLength y maxLength.
  */
-const MENSAJES: Record<string, (detalle: any) => string> = {
+const MENSAJES: Record<string, (detalle: DetalleError) => string> = {
   required: () => 'Este campo es obligatorio.',
   minlength: (d) => `Necesita al menos ${d.requiredLength} caracteres.`,
   maxlength: (d) => `No puede superar los ${d.requiredLength} caracteres.`,

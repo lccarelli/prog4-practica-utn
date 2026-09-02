@@ -22,10 +22,7 @@ export class Formulario {
   formulario = this.fb.group(
     {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      email: [
-        '',
-        [Validators.required, sinEspacios(), Validators.email, dominioConPunto()],
-      ],
+      email: ['', [Validators.required, sinEspacios(), Validators.email, dominioConPunto()]],
       nota: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(280)]],
       puntaje: [
         null as number | null,

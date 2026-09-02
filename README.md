@@ -82,6 +82,8 @@ En `pages/` va lo que tiene URL propia; en `componentes/`, lo reutilizable.
 - **GitHub Actions** ([`ci.yml`](.github/workflows/ci.yml)): lint, formato, tests y build en cada push y pull request. Detecta las carpetas con `angular.json` y corre una verificación por cada una, en paralelo y sin  `fail-fast`. Agregar una clase no requiere tocar el workflow.
 - **Vercel**: deploy. Preview por rama, producción en `main`.
 
+Cada `clase-XX` necesita los scripts `lint`, `format:check`, `test:ci` y `build`, o el workflow falla al no encontrarlos. Copiando la clase anterior vienen incluidos; arrancando con `ng new` hay que agregarlos y correr `ng add angular-eslint`.
+
 ## Clases
 
 | Clase | Fecha      | Temas                                                             | Proyecto              | Apunte                             |
