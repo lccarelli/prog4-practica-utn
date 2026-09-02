@@ -7,6 +7,14 @@ dist/
 /tmp
 /out-tsc
 
+# Secretos. El repositorio es público: nada de esto se commitea.
+*.local.md
+.env
+.env.*
+!.env.example
+**/environments/environment.secrets.ts
+.supabase/
+
 # Editores
 .idea/
 .vscode/*
