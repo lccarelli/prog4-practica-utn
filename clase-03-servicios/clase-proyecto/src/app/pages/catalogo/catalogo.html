@@ -1,0 +1,31 @@
+<section class="mx-auto max-w-6xl px-6 py-10">
+  <header>
+    <h1 class="text-3xl font-bold tracking-tight">Catálogo</h1>
+    <p class="mt-1 text-slate-500">
+      Personajes de Rick and Morty
+      @if (total()) {
+        <span class="text-slate-400">· {{ total() }} en total</span>
+      }
+    </p>
+    @if (favoritos().length > 0) {
+      <p class="mt-3 text-sm text-slate-600">
+        Favoritos:
+        @for (favorito of favoritos(); track favorito.id) {
+          <span class="mr-2 rounded bg-slate-200 px-2 py-0.5">{{ favorito.name }}</span>
+        }
+      </p>
+    }
+  </header>
+
+  @if (cargando()) {
+    <p class="mt-10 text-slate-500">Cargando…</p>
+  } @else if (error(); as mensaje) {
+    <p class="mt-10 rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">{{ mensaje }}</p>
+  } @else {
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      @for (personaje of personajes(); track personaje.id) {
+        <app-personaje-card [personaje]="personaje" (agregarFavorito)="recibirFavorito($event)" />
+      }
+    </div>
+  }
+</section>

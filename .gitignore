@@ -6,6 +6,7 @@ dist/
 .angular/
 /tmp
 /out-tsc
+*.tsbuildinfo
 
 # Secretos. El repositorio es público: nada de esto se commitea.
 *.local.md

@@ -1,0 +1,116 @@
+<section class="mx-auto max-w-2xl px-6 py-10">
+  <header>
+    <h1 class="text-3xl font-bold tracking-tight">Formulario</h1>
+    <p class="mt-1 text-slate-500">Agregar un personaje a mi colección</p>
+  </header>
+
+  <form
+    [formGroup]="formulario"
+    (ngSubmit)="enviar()"
+    class="mt-8 space-y-5 rounded-xl border border-slate-200 bg-white p-6"
+  >
+    <div>
+      <label for="nombre" class="block text-sm font-medium">Nombre</label>
+      <input
+        id="nombre"
+        formControlName="nombre"
+        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+      />
+      <app-errores [errores]="nombre?.touched ? nombre?.errors : null" />
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+      />
+      <app-errores [errores]="email?.touched ? email?.errors : null" />
+    </div>
+
+    <div>
+      <label for="nota" class="block text-sm font-medium">Nota</label>
+      <textarea
+        id="nota"
+        formControlName="nota"
+        rows="3"
+        class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+      ></textarea>
+      <p class="mt-1 text-xs text-slate-400">{{ nota?.value?.length ?? 0 }} / 280</p>
+      <app-errores [errores]="nota?.touched ? nota?.errors : null" />
+    </div>
+
+    <div>
+      <label for="puntaje" class="block text-sm font-medium">Puntaje (1 a 5)</label>
+      <input
+        id="puntaje"
+        type="number"
+        formControlName="puntaje"
+        class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+      />
+      <app-errores [errores]="puntaje?.touched ? puntaje?.errors : null" />
+    </div>
+
+    <fieldset formGroupName="visto" class="rounded-lg border border-slate-200 p-4">
+      <legend class="px-2 text-sm font-medium text-slate-500">Dónde lo vi (opcional)</legend>
+
+      <div class="flex gap-4">
+        <div>
+          <label for="temporada" class="block text-sm font-medium">Temporada</label>
+          <input
+            id="temporada"
+            type="number"
+            formControlName="temporada"
+            class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+          />
+          <app-errores [errores]="temporada?.touched ? temporada?.errors : null" />
+        </div>
+
+        <div>
+          <label for="episodio" class="block text-sm font-medium">Episodio</label>
+          <input
+            id="episodio"
+            type="number"
+            formControlName="episodio"
+            class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+          />
+          <app-errores [errores]="episodio?.touched ? episodio?.errors : null" />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Error de grupo: no pertenece a ningún control, sino al formulario entero. -->
+    @if (formulario.touched && formulario.errors?.['notaCorta']; as error) {
+      <p class="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        Un puntaje de 5 necesita una nota de al menos {{ error.requerido }} caracteres. Llevás
+        {{ error.actual }}.
+      </p>
+    }
+
+    <div class="flex items-center gap-3 pt-2">
+      <button
+        type="submit"
+        class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
+      >
+        Guardar
+      </button>
+      <button
+        type="button"
+        (click)="limpiar()"
+        class="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
+      >
+        Limpiar
+      </button>
+      <span class="text-xs text-slate-400">{{ formulario.valid ? 'válido' : 'incompleto' }}</span>
+    </div>
+  </form>
+
+  @if (enviado(); as datos) {
+    <div class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+      <p class="text-sm font-medium text-emerald-800">Guardado</p>
+      <pre class="mt-2 overflow-x-auto text-xs text-emerald-900">{{ datos }}</pre>
+    </div>
+  }
+</section>
