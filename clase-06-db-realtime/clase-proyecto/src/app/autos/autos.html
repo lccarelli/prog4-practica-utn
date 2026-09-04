@@ -1,0 +1,21 @@
+<h2>Autos</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+  <input formControlName="marca" placeholder="marca" />
+  <input formControlName="modelo" placeholder="modelo" />
+  <input formControlName="precio" placeholder="precio" type="number" />
+  <button type="submit">{{ editando() === null ? 'Crear' : 'Guardar cambios' }}</button>
+  @if (editando() !== null) {
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  }
+</form>
+
+<ul>
+  @for (auto of autos(); track auto.id) {
+    <li>
+      {{ auto.id }} · {{ auto.marca }} {{ auto.modelo }} · ${{ auto.precio }}
+      <button (click)="editar(auto)">Editar</button>
+      <button (click)="eliminar(auto.id)">Eliminar</button>
+    </li>
+  }
+</ul>

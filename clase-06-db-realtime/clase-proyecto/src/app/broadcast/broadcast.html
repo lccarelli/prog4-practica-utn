@@ -1,0 +1,10 @@
+<h2>Broadcast</h2>
+
+<p>Abrí esta página en dos pestañas y tocá el botón en una: el mensaje llega a la otra.</p>
+<button (click)="saludar()">Saludar</button>
+
+<ul>
+  @for (texto of recibidos(); track $index) {
+    <li>{{ texto }}</li>
+  }
+</ul>
