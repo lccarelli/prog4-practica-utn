@@ -1,0 +1,15 @@
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.error {
+  color: #c00;
+}

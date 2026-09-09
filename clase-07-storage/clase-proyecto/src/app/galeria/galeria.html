@@ -1,0 +1,22 @@
+<h2>Galería</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="subir()">
+  <input type="file" accept="image/*" (input)="cargarImagen($event)" />
+  <button type="submit" [disabled]="formulario.invalid">Subir</button>
+</form>
+
+@if (error(); as mensaje) {
+  <p class="error">{{ mensaje }}</p>
+}
+
+<div class="grilla">
+  @for (imagen of imagenes(); track imagen.id) {
+    <figure>
+      <img [src]="storage.urlPublica(imagen.ruta)" [alt]="imagen.ruta" />
+      <figcaption>
+        {{ imagen.ruta }}
+        <button (click)="eliminar(imagen)">Eliminar</button>
+      </figcaption>
+    </figure>
+  }
+</div>
