@@ -1,0 +1,19 @@
+<h2>Pipes</h2>
+
+<h3>De Angular</h3>
+<ul>
+  <li>Fecha cruda: {{ fecha }}</li>
+  <li>date: {{ fecha | date: 'dd/MM/yyyy HH:mm' : '-03:00' }}</li>
+  <li>currency: {{ precio | currency: 'ARS' : 'symbol' : '1.2-2' }}</li>
+  <li>number: {{ precio | number: '1.0-1' }}</li>
+  <li>percent: {{ porcentaje | percent }}</li>
+  <li>titlecase: {{ nombre | titlecase }}</li>
+  <li>async: {{ saludo | async }}</li>
+</ul>
+
+<h3>Propios</h3>
+<ul>
+  <li>textoLargo: {{ descripcion | textoLargo }}</li>
+  <li>textoLargo: 40 → {{ descripcion | textoLargo: 40 }}</li>
+  <li>fechaPasada: {{ fecha | fechaPasada }}</li>
+</ul>

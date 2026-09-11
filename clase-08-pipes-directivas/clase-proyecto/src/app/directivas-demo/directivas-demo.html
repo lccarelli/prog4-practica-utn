@@ -1,0 +1,13 @@
+<h2>Directivas</h2>
+
+<h3>De Angular: [class.x] y [style.x]</h3>
+<p [class.negrita]="esNegrita()" [style.color]="esRojo() ? 'red' : 'black'">
+  Este texto cambia con dos signals.
+</p>
+<button (click)="esNegrita.set(!esNegrita())">Cambiar peso</button>
+<button (click)="esRojo.set(!esRojo())">Cambiar color</button>
+
+<h3>Propia: appHighlight</h3>
+<p appHighlight>Pasá el mouse: rojo, el color por defecto.</p>
+<p appHighlight="lightblue">Pasá el mouse: celeste, texto fijo sin corchetes.</p>
+<p [appHighlight]="colorElegido">Pasá el mouse: el color de una variable, con corchetes.</p>
