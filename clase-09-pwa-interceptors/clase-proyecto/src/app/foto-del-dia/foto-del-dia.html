@@ -1,0 +1,15 @@
+<h2>Foto astronómica del día</h2>
+
+<input type="date" [(ngModel)]="fecha" />
+<button (click)="traer()" [disabled]="fecha === ''">Traer</button>
+
+@if (loading.cargando()) {
+  <p>Cargando…</p>
+} @else if (error(); as mensaje) {
+  <p class="error">{{ mensaje }}</p>
+} @else if (apod(); as foto) {
+  <figure>
+    <img [src]="foto.url" [alt]="foto.title" width="250" />
+    <figcaption>{{ foto.date }} · {{ foto.title }}</figcaption>
+  </figure>
+}
