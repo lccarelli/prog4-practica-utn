@@ -1,0 +1,13 @@
+@if (!swPush.isEnabled) {
+  <p>El Service Worker está apagado: esto sólo anda con un build de producción o deployado.</p>
+} @else if (estado() === 'pregunta') {
+  <p>¿Querés recibir notificaciones de esta app?</p>
+  <button (click)="registrar()">Sí</button>
+  <button (click)="estado.set('rechazado')">No</button>
+} @else if (estado() === 'suscripto') {
+  <p>Listo: cuando la Edge Function envíe, te llega la notificación.</p>
+} @else if (estado() === 'rechazado') {
+  <p>No vas a recibir notificaciones.</p>
+} @else {
+  <p>No se pudo guardar la suscripción (¿ya estaba guardada?).</p>
+}
