@@ -1,0 +1,19 @@
+<h2>Mayor o menor</h2>
+
+<p>
+  Vidas: {{ vidas() }} · Puntos: {{ puntos() }} · Tiempo: {{ segundos() }} s · Quedan
+  {{ restantes() }} cartas
+</p>
+
+@if (actual(); as carta) {
+  <p class="carta">{{ nombre(carta) }}</p>
+}
+
+@if (!terminada()) {
+  <p>¿La próxima es mayor o menor?</p>
+  <button (click)="elegir('mayor')">Mayor</button>
+  <button (click)="elegir('menor')">Menor</button>
+} @else {
+  <p>Terminó la partida: {{ puntos() }} puntos en {{ segundos() }} segundos.</p>
+  <button (click)="iniciar()">Jugar de nuevo</button>
+}
