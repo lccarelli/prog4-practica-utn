@@ -1,0 +1,10 @@
+<main>
+  <button (click)="registrarse()">Registrarse</button>
+  <button (click)="login()">Login</button>
+  <button (click)="traer()">Traer algo que requiera token</button>
+  <button (click)="borrarToken()">Borrar token</button>
+
+  @if (respuesta()) {
+    <p>{{ respuesta() }}</p>
+  }
+</main>
