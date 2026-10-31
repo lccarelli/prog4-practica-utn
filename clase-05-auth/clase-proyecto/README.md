@@ -10,7 +10,7 @@ npm start        # http://localhost:4200
 
 Parte de la clase 04 (catálogo y formularios de Rick and Morty) y le suma registro, ingreso y salida con Supabase Auth. El catálogo es público; `/formulario` y `/episodios` piden sesión.
 
-Usa el proyecto de Supabase de [`../clase-apunte/supabase.md`](../clase-apunte/supabase.md). Si no responde, está pausado por inactividad: se reanuda desde el dashboard con *Restore project*.
+Usa el proyecto de Supabase de [`../clase-apunte/supabase.md`](../clase-apunte/supabase.md). Si no responde, está pausado por inactividad: se reanuda desde el dashboard con _Restore project_.
 
 ## Estructura
 
@@ -42,8 +42,8 @@ src/
 
 ## Diferencias con el código de la cátedra
 
-| Acá | En la cátedra | Por qué |
-| --- | ------------- | ------- |
-| El guard espera `getSession()` | El guard lee el signal | El signal está vacío hasta que se restaura la sesión |
-| Navega el login | Navega `onAuthStateChange` | Así no te saca de la ruta cuando se renueva el token |
-| `deslogueadoGuard` en `auth` | Quedó como comentario ("debería agregar un canActivate…") | No tiene sentido entrar al login con sesión |
+| Acá                            | En la cátedra                                             | Por qué                                              |
+| ------------------------------ | --------------------------------------------------------- | ---------------------------------------------------- |
+| El guard espera `getSession()` | El guard lee el signal                                    | El signal está vacío hasta que se restaura la sesión |
+| Navega el login                | Navega `onAuthStateChange`                                | Así no te saca de la ruta cuando se renueva el token |
+| `deslogueadoGuard` en `auth`   | Quedó como comentario ("debería agregar un canActivate…") | No tiene sentido entrar al login con sesión          |
