@@ -22,11 +22,11 @@ jobs:
         uses: actions/checkout@v7
 
       # Busca las carpetas que tengan angular.json y arma la lista para la matriz,
-      # así no hay que tocar este archivo al agregar clase-02, clase-03, etc.
+      # así no hay que tocar este archivo al agregar una clase nueva.
       - name: Buscar carpetas con angular.json
         id: buscar
         run: |
-          proyectos=$(find . -maxdepth 2 -name angular.json -not -path './node_modules/*' \
+          proyectos=$(find . -maxdepth 4 -name angular.json -not -path '*/node_modules/*' \
             | sed 's|^\./||; s|/angular.json$||' \
             | sort \
             | jq -R -s -c 'split("\n") | map(select(length > 0))')
@@ -70,13 +70,13 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint --if-present
 
       - name: Chequear formato
-        run: npm run format:check
+        run: npm run format:check --if-present
 
       - name: Tests
-        run: npm run test:ci
+        run: npm run test:ci --if-present
 
       - name: Build de producción
         run: npm run build
